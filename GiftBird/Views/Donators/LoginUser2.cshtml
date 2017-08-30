@@ -1,0 +1,45 @@
+﻿@model GiftBird.Models.LoginModels
+
+@{
+	ViewBag.Title = "LoginUser2";
+}
+
+<h2>Login</h2>
+<hr />
+<div class="form-horizontal">
+	@using (Html.BeginForm("Verify", "Donators", FormMethod.Post))
+	{
+		@Html.AntiForgeryToken();
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<fieldset class="form-group">
+			<div>
+				<div class="form-group">
+					@Html.Label("User ID", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.uName, new { htmlAttributes = new { @class = "form-control", placeholder = "unique identifier" } })
+					</div>
+					<p>@Html.ValidationMessageFor(model => model.uName)</p>
+					<p>@ViewBag.U</p>
+				</div>
+				<br />
+				<div>
+					<div class="form-group">
+						@Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.password, "Password", new { htmlAttributes = new { @class = "form-control", placeholder = "8 characters" } })
+						</div>
+						<p>@Html.ValidationMessageFor(model => model.password)</p>
+						<p>@ViewBag.P</p>
+
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<input type="submit" value="Submit" class="btn btn-default" />
+							@*@Html.ActionLink("Submit", "Login", "Donators")*@
+						</div>
+					</div>
+</fieldset>
+	}
+</div>
+
+

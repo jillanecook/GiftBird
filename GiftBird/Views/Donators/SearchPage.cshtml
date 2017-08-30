@@ -1,0 +1,45 @@
+﻿@model GiftBird.Models.SearchModel
+@{
+    ViewBag.Title = "SearchPage";
+    ViewBag.Cat = new List<string>() { "Arts, Culture & Humanities","Education", "Environment and Animals", "Health", "Human Services", "International, Foreign Affairs", "Public, Societal Benefit", "Religion Related","Mutual/Membership Benefit" };
+
+}
+
+<h2>Search Page</h2>
+
+@using (Html.BeginForm())
+{
+   
+    Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    <form class="form-horizontal" action="Success">
+        <fieldset class="form-group">
+            <div>
+                @Html.Label("Search", new { style = "display:inline"})
+                @Html.EditorFor(model => model.searchParams);
+            </div>
+            <div>
+                @Html.Label("State", new { style = "display:inline" })
+                @Html.EditorFor(model => model.state)
+            </div>
+            <div>
+                @Html.Label("City", new { style = "display:inline" })
+                @Html.EditorFor(model => model.city)
+            </div>
+            <div>
+                @Html.Label("Zip", new { style = "display:inline" })
+                @Html.EditorFor(model => model.zip)
+            </div>
+            <div>
+                @Html.Label("Category of Care", new { style = "display:inline" })
+                @Html.DropDownListFor(model => model.categoryOfCare, (IEnumerable<SelectListItem>)ViewBag.items)
+            </div>
+            @Html.ActionLink("Submit", "SearchPage")
+            <input type="submit" class="btn-group-sm" value="Submit" />
+        </fieldset>
+        <p>@ViewBag.State</p>
+        <p>@Html.Raw(ViewBag.URL)</p>
+        <p>@Html.Raw(ViewBag.Posts)</p>
+    </form>
+}
+

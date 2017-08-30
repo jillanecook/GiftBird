@@ -1,0 +1,77 @@
+﻿@model GiftBird.Models.SearchModel
+@{
+    ViewBag.Title = "SearchPage";
+    ViewBag.Cat = new List<string>() { "Arts, Culture & Humanities", "Education", "Environment and Animals", "Health", "Human Services", "International, Foreign Affairs", "Public, Societal Benefit", "Religion Related", "Mutual/Membership Benefit" };
+
+}
+
+<h2>Search Page</h2>
+<hr />
+<div class="form-horizontal">
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <form class="form-horizontal" action="Success">
+            <fieldset class="form-group">
+                <div>
+                    <div class="form-group">
+                        @Html.Label("Search", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.searchParams, new { htmlAttributes = new { @class = "form-control", placeholder = "Humane Society + Grand Rapids" } })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.Label("City", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control", placeholder = "Grand Rapids" } })
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        @Html.Label("State", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control", placeholder = "MI" } })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        @Html.Label("Zip", htmlAttributes: new { @class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.zip, new { htmlAttributes = new { @class = "form-control", placeholder = "49503" } })
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </div>
+                    </div>
+            </fieldset>
+        </form>
+    }
+    <form class="form-horizontal" action="Success">
+        <fieldset class="form-group">
+            <div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p>Search Results Near Your Gifting Preferences:</p>
+                        @foreach (string x in ViewBag.Match)
+                        {
+                            <label><input type="checkbox" name="regSelect" value="@x" />  @x</label><br />
+                        }
+
+                        @foreach (string y in ViewBag.NoMatch)
+                        {
+                            <label><input type="checkbox" name="regSelect" value="@y" />  @y</label><br />
+                        }
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+
+
+
+

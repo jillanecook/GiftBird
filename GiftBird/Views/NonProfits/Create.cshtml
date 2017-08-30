@@ -1,0 +1,112 @@
+﻿@model GiftBird.Models.NonProfit
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+	@Html.AntiForgeryToken()
+	
+	<div class="form-horizontal">
+		<h4>NonProfit</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.Label("Non Profit Name", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.NonProfitName, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.NonProfitName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.Label("Website", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.NonProfitSite, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.NonProfitSite, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<!--
+		<div class="form-group">
+			@Html.Label("Contact Name", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.ContactName, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.ContactName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		
+		<div class="form-group">
+			@Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		
+		<div class="form-group">
+			@Html.Label("City", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.Label("State", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		-->
+		<div class="form-group">
+			@Html.Label("Zip Code", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.Label("User ID", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		
+		<div class="form-group">
+			@Html.Label("Category Of Care", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CategoryOfCare, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CategoryOfCare, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" @*formaction="NanProfile"*@ />
+			</div>
+		</div>
+	</div>
+}
+
+@*<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

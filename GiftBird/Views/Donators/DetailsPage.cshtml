@@ -1,0 +1,47 @@
+﻿@model GiftBird.Models.Donator
+
+@{
+    ViewBag.Title = "DetailsPage";
+}
+
+<div>
+    <h2>@ViewBag.Name </h2>
+    <hr />
+
+    @*<h3>Here are your current charities selected for donation:</h3>*@
+
+    @ViewBag.Message
+    <br />
+    <br />
+    @ViewBag.RegTest
+
+    <!--still need to populate the 3 charities that user selected from search page-->
+</div>
+<br />
+<br />
+<div class="btn btn-default" class="col-md-offset-2 col-md-10">
+    <div>
+        @Html.ActionLink("Search", "SearchView")
+
+    </div>
+
+
+</div>
+<br />
+<br />
+<div class="fb-save" data-uri="http://giftbird.azurewebsites.net/Donators/Verify" data-size="large"></div>
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=328135644263670";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<br />
+<!-- Place this tag in your head or just before your close body tag. -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- Place this tag where you want the share button to render. -->
+<div class="g-plus" data-action="share"></div>
